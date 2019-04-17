@@ -1991,17 +1991,17 @@ var GeneralizedClientService = /** @class */ (function () {
         this.http = http;
     }
     GeneralizedClientService.prototype.getAdminUsers = function () {
-        var url = '/OnBoardingAppChirag/assets/admin.json';
+        var url = '/OnBoardingAppByChirag/assets/admin.json';
         var result = this.http.get(url);
         return result;
     };
     GeneralizedClientService.prototype.getInternationalStudentDocuments = function () {
-        var url = '/OnBoardingAppChirag/assets/internationalStudentDocs.json';
+        var url = '/OnBoardingAppByChirag/assets/internationalStudentDocs.json';
         var result = this.http.get(url);
         return result;
     };
     GeneralizedClientService.prototype.getDomesticStudentDocuments = function () {
-        var url = '/OnBoardingAppChirag/assets/domesticStudentDocs.json';
+        var url = '/OnBoardingAppByChirag/assets/domesticStudentDocs.json';
         var result = this.http.get(url);
         return result;
     };
