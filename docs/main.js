@@ -246,16 +246,6 @@ var Guid = /** @class */ (function () {
     return Guid;
 }());
 
-// let e = new Guid();
-// e; // Guid { value: '00000000-0000-0000-0000-000000000000' }​​​​​
-// e.toString(); // 00000000-0000-0000-0000-000000000000​​​​​
-// console.log(e); // ​​​​​Guid { value: '00000000-0000-0000-0000-000000000000' }​​​​​
-// JSON.stringify(e); // ​​​​​"00000000-0000-0000-0000-000000000000"​​​​​
-// e = Guid.newGuid(); // ​​​​​Guid { value: 'bb90ef83-1a7e-42b1-90ba-39cdebb6366c' }​​​​​
-// JSON.stringify(e); // ​​​​​"bb90ef83-1a7e-42b1-90ba-39cdebb6366c"​​​​​
-// Guid.isValid(e.toString()); // true
-// Guid.empty; // ​​​​​00000000-0000-0000-0000-000000000000​​​​​
-// Guid.isValid(Guid.empty); // false
 
 
 /***/ }),
@@ -442,7 +432,6 @@ var AdminLoginComponent = /** @class */ (function () {
         });
         this.adminLoginService.getAdminUsers().subscribe(function (res) {
             _this.adminUsersList = res.admins;
-            console.log(_this.adminUsersList);
         });
     }
     AdminLoginComponent.prototype.ngOnInit = function () {
@@ -781,12 +770,10 @@ var OnBoardingFormComponent = /** @class */ (function () {
         });
         this.documentService.getInternationalStudentDocuments().subscribe(function (res) {
             _this.internationalDocs = res.internationalStudentDocuments;
-            console.log(_this.internationalDocs);
             localStorage.internationalDocs = JSON.stringify(_this.internationalDocs);
         });
         this.documentService.getDomesticStudentDocuments().subscribe(function (res) {
             _this.domesticDocs = res.domesticStudentDocuments;
-            console.log(_this.domesticDocs);
             localStorage.domesticDocs = JSON.stringify(_this.domesticDocs);
         });
         if (JSON.parse(localStorage.getItem('checkInternationalDoc'))) {
@@ -933,9 +920,7 @@ var OnBoardingFormComponent = /** @class */ (function () {
             result.id = this.id.toString();
             result.internationalDocs = this.onBoardingForm.controls.internationalDocs.value;
             result.domesticDocs = this.onBoardingForm.controls.domesticDocs.value;
-            console.log(result);
             this.listOfOnBoardingStudents.push(result);
-            console.log(this.listOfOnBoardingStudents);
             if (JSON.parse(localStorage.getItem('studentsList')) === null) {
                 localStorage.studentsList = JSON.stringify(JSON.parse(JSON.stringify(this.listOfOnBoardingStudents)));
             }
@@ -989,10 +974,8 @@ var OnBoardingFormComponent = /** @class */ (function () {
             result_2.id = JSON.parse(localStorage.getItem('editId'));
             result_2.internationalDocs = this.onBoardingForm.controls.internationalDocs.value;
             result_2.domesticDocs = this.onBoardingForm.controls.domesticDocs.value;
-            console.log(result_2);
             this.listOfOnBoardingStudents = JSON.parse(localStorage.getItem('studentsList'));
             var index = this.listOfOnBoardingStudents.findIndex(function (res) { return res.id === result_2.id; });
-            console.log(index);
             this.listOfOnBoardingStudents[index] = result_2;
             localStorage.studentsList = JSON.stringify(JSON.parse(JSON.stringify(this.listOfOnBoardingStudents)));
             this.onBoardingForm.reset();
@@ -1007,6 +990,7 @@ var OnBoardingFormComponent = /** @class */ (function () {
         this.dialogRef.close();
     };
     OnBoardingFormComponent.prototype.callingCancel = function () {
+        localStorage.setItem('editCalled', JSON.stringify(false));
         this.onClose();
     };
     OnBoardingFormComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -1093,12 +1077,10 @@ var OnBoardingViewComponent = /** @class */ (function () {
         });
         this.documentService.getInternationalStudentDocuments().subscribe(function (res) {
             _this.internationalDocs = res.internationalStudentDocuments;
-            console.log(_this.internationalDocs);
             localStorage.internationalDocs = JSON.stringify(_this.internationalDocs);
         });
         this.documentService.getDomesticStudentDocuments().subscribe(function (res) {
             _this.domesticDocs = res.domesticStudentDocuments;
-            console.log(_this.domesticDocs);
             localStorage.domesticDocs = JSON.stringify(_this.domesticDocs);
         });
         if (JSON.parse(localStorage.getItem('checkInternationalDocView'))) {
@@ -1232,7 +1214,6 @@ var StudentsListComponent = /** @class */ (function () {
     StudentsListComponent.prototype.ngOnInit = function () {
         var _this = this;
         var array = localStorage.getItem('studentsList');
-        console.log(JSON.parse(array));
         this.listData = new _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatTableDataSource"](JSON.parse(array));
         this.listData._updateChangeSubscription();
         if (this.listData.data !== null) {
@@ -1258,7 +1239,6 @@ var StudentsListComponent = /** @class */ (function () {
         }
     };
     StudentsListComponent.prototype.onChange = function (newValue) {
-        console.log(newValue);
         this.selectedCategory = newValue;
         if (this.selectedCategory === 'All' && this.listData.data != null) {
             this.searchKey = '';
@@ -1323,7 +1303,6 @@ var StudentsListComponent = /** @class */ (function () {
         dialogRef.componentInstance.onBoardingForm.setValue(row);
         dialogRef.afterClosed().subscribe(function () {
             var array = localStorage.getItem('studentsList');
-            console.log(JSON.parse(array));
             _this.listData = new _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatTableDataSource"](JSON.parse(array));
             _this.listData._updateChangeSubscription();
             if (_this.listData.data !== null) {
@@ -1339,7 +1318,6 @@ var StudentsListComponent = /** @class */ (function () {
     };
     StudentsListComponent.prototype.callingViewOnBoard = function (row) {
         var _this = this;
-        debugger;
         delete row.docs;
         localStorage.setItem('viewId', JSON.stringify(row.id));
         delete row.id;
@@ -1374,7 +1352,6 @@ var StudentsListComponent = /** @class */ (function () {
         dialogRef.componentInstance.onBoardingViewForm.setValue(row);
         dialogRef.afterClosed().subscribe(function () {
             var array = localStorage.getItem('studentsList');
-            console.log(JSON.parse(array));
             _this.listData = new _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatTableDataSource"](JSON.parse(array));
             _this.listData._updateChangeSubscription();
             if (_this.listData.data !== null) {
@@ -1391,14 +1368,11 @@ var StudentsListComponent = /** @class */ (function () {
     StudentsListComponent.prototype.onDelete = function (row) {
         var _this = this;
         var popupReturnvalue = false;
-        console.log(row);
         this.dialogService.openConfirmDialog('Are you sure to delete this record?')
             .afterClosed().subscribe(function (res) {
-            console.log(res);
             popupReturnvalue = res;
             if (popupReturnvalue) {
                 var array = localStorage.getItem('studentsList');
-                console.log(JSON.parse(array));
                 _this.listData = new _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatTableDataSource"](JSON.parse(array));
                 var index = _this.listData.data.findIndex(function (item) { return item.id === row.id; });
                 _this.listData.data.splice(index, 1);
@@ -1685,7 +1659,6 @@ var HeaderComponent = /** @class */ (function () {
         var _this = this;
         this.dialogService.openConfirmDialog('Do you want to Logout?')
             .afterClosed().subscribe(function (res) {
-            console.log(res);
             if (res) {
                 localStorage.clear();
                 _this.router.navigate(['login']);
