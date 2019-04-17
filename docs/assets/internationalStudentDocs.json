@@ -1,0 +1,27 @@
+{
+  "internationalStudentDocuments": [{
+      "documentName": "Domicile Certificate",
+      "isMandatory": true
+    },
+    {
+      "documentName": "Birth Certificate",
+      "isMandatory": true
+    },
+    {
+      "documentName": "Previous Marksheets",
+      "isMandatory": true
+    },
+    {
+      "documentName": "Police Clearance",
+      "isMandatory": true
+    },
+    {
+      "documentName": "Passport",
+      "isMandatory": true
+    },
+    {
+      "documentName": "Signed Declaration",
+      "isMandatory": true
+    }
+  ]
+}

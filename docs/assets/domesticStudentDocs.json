@@ -1,0 +1,27 @@
+{
+  "domesticStudentDocuments": [{
+      "documentName": "Domicile Certificate",
+      "isMandatory": true
+    },
+    {
+      "documentName": "Birth Certificate",
+      "isMandatory": true
+    },
+    {
+      "documentName": "Previous Marksheets",
+      "isMandatory": true
+    },
+    {
+      "documentName": "Police Clearance",
+      "isMandatory": false
+    },
+    {
+      "documentName": "Passport",
+      "isMandatory": false
+    },
+    {
+      "documentName": "Signed Declaration",
+      "isMandatory": true
+    }
+  ]
+}

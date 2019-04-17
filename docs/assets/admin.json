@@ -1,0 +1,21 @@
+{
+  "admins": [{
+      "username": "Chirag",
+      "password": "Chirag1234",
+      "gender": "Male",
+      "email": "chirag.girdhar@nagarro.com"
+    },
+    {
+      "username": "User1",
+      "password": "User12345",
+      "gender": "Female",
+      "email": "user1.user1@nagarro.com"
+    },
+    {
+      "username": "User2",
+      "password": "User12345",
+      "gender": "Male",
+      "email": "user2.user2@nagarro.com"
+    }
+  ]
+}
