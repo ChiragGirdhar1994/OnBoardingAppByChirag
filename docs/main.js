@@ -1439,6 +1439,7 @@ var StudentsListComponent = /** @class */ (function () {
         else {
             this.hideNoData = true;
         }
+        localStorage.setItem('editCalled', JSON.stringify(false));
     };
     /*
       To select category from All, Domestic and International control
@@ -1913,8 +1914,7 @@ __webpack_require__.r(__webpack_exports__);
 var NavbarComponent = /** @class */ (function () {
     function NavbarComponent() {
     }
-    NavbarComponent.prototype.ngOnInit = function () {
-    };
+    NavbarComponent.prototype.ngOnInit = function () { };
     NavbarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'app-navbar',
